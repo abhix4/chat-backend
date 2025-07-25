@@ -189,20 +189,7 @@ src/
 ---
 
 
-## 📬 Postman Collection
 
-Import the Postman collection from:
 
-```
-https://web.postman.co/workspace/My-Workspace~ac89a6a3-3231-4fa4-8fd7-b263e51ed98e/collection/29520596-7205966e-ed45-47e2-94d8-7c62eafaa102?action=share&source=copy-link&creator=29520596
-```
 
-Includes:
-- Authorization with Bearer token
-- All core routes
-
----
-
-## 🔚 License
-
-MIT — happy hacking!
+happy hacking!
