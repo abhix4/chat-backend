@@ -84,7 +84,7 @@ POST /appointments/complete
 ### 🔍 View All Active Chats
 
 ```http
-GET /admin/active-chats
+POST /admin/active-chats
 ```
 
 ---
@@ -103,7 +103,7 @@ POST /admin/assign
 ### 📋 View Assigned Chats
 
 ```http
-GET /staff/assigned
+POST /staff/assigned
 ```
 
 ---
@@ -121,7 +121,7 @@ POST /chat/create
 ### 📜 Get Chat History
 
 ```http
-GET /chat/history
+POST /chat/history
 ```
 
 ---
