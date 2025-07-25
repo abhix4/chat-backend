@@ -1,7 +1,9 @@
-// src/controllers/appointmentController.ts
+
 import Appointment from '../models/appointment';
 import ChatRoom from '../models/chat-room';
 import Participant from '../models/participants';
+
+// Book an Appointment
 
 export const bookAppointment = async (req, res) => {
   try {
@@ -9,14 +11,14 @@ export const bookAppointment = async (req, res) => {
 
     const appointment = await Appointment.create({ petOwnerId, hospitalId, time, status: 'confirmed' });
 
-    // Create ChatRoom
+  
     const chatRoom = await ChatRoom.create({
       appointmentId: appointment._id,
       petOwnerId,
       hospitalId,
     });
 
-    // Add Participants
+ 
     await Participant.create([
       { userId: petOwnerId, role: 'petOwner', chatRoomId: chatRoom._id },
       { userId: 'test', role: 'staff', chatRoomId: chatRoom._id },
@@ -29,6 +31,7 @@ export const bookAppointment = async (req, res) => {
   }
 };
 
+// Complete a booked Appointment
 
 export const completeAppointment = async (req, res) => {
   try {
@@ -36,15 +39,13 @@ export const completeAppointment = async (req, res) => {
 
     const appointment = await Appointment.findById(appointmentId);
 
-    appointment.status = 'completed'
-    await appointment.save()
-    // Create ChatRoom
+    appointment.status = 'completed';
+    await appointment.save();
+  
     const chatRoom = await ChatRoom.findOne({appointmentId: appointment._id});
 
-    chatRoom.status = 'closed';
+    chatRoom.status = 'archived';
     await chatRoom.save();
-
-    
 
     res.status(201).json({ appointment, chatRoomId: chatRoom._id });
   } catch (error) {

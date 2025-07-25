@@ -22,7 +22,7 @@ export const assignChat = async (req,res) => {
      try {
     const { staffId, chatRoomId } = req.body;
 
-    // Step 1: Find the chat room
+    
     const room = (await chatRoom.findById(chatRoomId))
     if (!room) {
       return res.status(404).json({ message: 'Chat room not found' });
@@ -34,12 +34,11 @@ export const assignChat = async (req,res) => {
       userId: staffId,
     });
 
-    // Step 4: If not, add them
     if (!existingParticipant) {
       const staff = await participants.create({
         userId: staffId,
         chatRoomId,
-        role: 'staff', // or 'vet'
+        role: 'staff', 
       });
        room.assigned = staff._id;
        await room.save();

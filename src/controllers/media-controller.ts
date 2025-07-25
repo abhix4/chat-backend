@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-// import path from 'path';
+
 
 export const uploadMedia = async (req: Request, res: Response) => {
   try {

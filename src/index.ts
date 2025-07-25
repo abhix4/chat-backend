@@ -1,3 +1,4 @@
+import './autoCloseChat'
 import express from 'express';
 import http from 'http';
 import mongoose from 'mongoose';
@@ -21,7 +22,7 @@ mongoose.connect('mongodb://admin:secret@localhost:27017').then(() => {
   console.log('MongoDB connected');
 
   app.use(express.json());
-  const uploadPath = path.resolve(__dirname, '../uploads'); // make it absolute
+  const uploadPath = path.resolve(__dirname, '../uploads'); 
   app.use('/uploads', express.static(uploadPath));
   app.use('/api/media', mediaRoutes);
   app.use('/api/chat', chatRoutes);

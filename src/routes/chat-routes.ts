@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.post('/create',authenticate, createChatRoom);
 router.post('/history',authenticate, chatHistory);
-router.post('/:roomId/archive',authenticate, archiveChat);
+// router.post('/:roomId/archive',authenticate, archiveChat);
 
 export default router;

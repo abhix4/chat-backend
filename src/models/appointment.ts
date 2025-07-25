@@ -6,6 +6,8 @@ const appointmentSchema = new mongoose.Schema({
   hospitalId: String,
   time: Date,
   status: { type: String, enum: ['pending', 'confirmed', 'completed'], default: 'pending' },
+},{
+  timestamps: true
 });
 
 export default mongoose.model('Appointment', appointmentSchema);
